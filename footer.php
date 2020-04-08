@@ -50,6 +50,19 @@
 	  		}
 
 	  	}
+
+	function hitung(){
+
+		var bayar = document.getElementById('bayar').value;
+		var sub_total = document.getElementById('sub_total').value;
+
+		var hasil = parseInt(bayar) - parseInt(sub_total);
+
+		if(!isNaN(hasil)){
+			document.getElementById('kembali').value = hasil;
+		}
+
+	}
   </script>
 
 </body>

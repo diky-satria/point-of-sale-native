@@ -220,6 +220,9 @@
                 if($_GET['halaman'] == 'hapusPengguna'){
                   include 'hapusPengguna.php';
                 }
+                if($_GET['halaman'] == 'hapusPembelian'){
+                  include 'hapusPembelian.php';
+                }
               }
 
              ?>

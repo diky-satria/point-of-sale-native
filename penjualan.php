@@ -59,8 +59,7 @@
 					<?php
 				}else{
 
-					$_SESSION['penjualan'] = $kodepj;
-					$koneksi->query("INSERT INTO penjualan_barang (kode_penjualan, kode_barcode, harga, jumlah, total) VALUES ('$kodepj2','$kode_barcode','$harga','$jumlah','$total')");
+					$koneksi->query("INSERT INTO penjualan (kode_penjualan, kode_barcode, harga, jumlah, total) VALUES ('$kodepj2','$barcode','$harga','$jumlah','$total')");
 
 					$koneksi->query("UPDATE barang SET stok=(stok-1) WHERE kode_barcode = '$kode_barcode'");
 
@@ -75,7 +74,7 @@
 	<pre>
 		<?php //print_r($data); ?>
 	</pre>
-	<?php if(isset($_SESSION['penjualan'])){ ?>
+	
 	<div class="row">
 		<div class="col-md">
 			<div class="card bg-gray">
@@ -98,8 +97,8 @@
 							<?php 
 
 								$no =1;
-								$sql_penjualan = $koneksi->query("SELECT * FROM penjualan_barang
-																JOIN barang ON penjualan_barang.kode_barcode=barang.kode_barcode WHERE kode_penjualan = '$kodepj'");
+								$sql_penjualan = $koneksi->query("SELECT * FROM penjualan
+																JOIN barang ON penjualan.kode_barcode=barang.kode_barcode WHERE kode_penjualan = '$kodepj'");
 								while($tampil = $sql_penjualan->fetch_assoc()){
 
 							 ?>
@@ -112,26 +111,81 @@
 								<td><?php echo $tampil['jumlah'] ?></td>
 								<td><?php echo number_format($tampil['total']) ?></td>
 								<td>
-									<a onclick="return confirm('Lanjutkan >>>')" href="hapusPembelian.php?id=<?php echo $tampil['id_penjualan_barang'] ?>&barcode=<?php echo $tampil['kode_barcode'] ?>&kodepj=<?php echo $tampil['kode_penjualan'] ?>" class="btn btn-sm btn-danger">Hapus</a>
+									<a onclick="return confirm('Lanjutkan >>>')" class="btn btn-sm btn-danger" href="index.php?halaman=hapusPembelian&id=<?php echo $tampil['id_penjualan_barang'] ?>&kodepj=<?php echo $tampil['kode_penjualan'] ?>&jumlah=<?php echo $tampil['jumlah'] ?>&barcode=<?php echo $data['kode_barcode'] ?>">Hapus</a>
 								</td>
 							</tr>
 
 							<?php 
 								
 								$total_bayar = $total_bayar + $tampil['total']; 
+								$diskon = $total_bayar * 10 / 100;
+								$totalsemua = $total_bayar - $diskon;
 							?>
 
 							<?php } ?>
 
+							<form method="post">
+
 							<tr>
-								<th colspan="5">Total</th>
+								<th colspan="5" style="text-align:right;">Total</th>
 								<td>
-									<input type="text" name="total" class="form-control" value="<?php echo number_format($total_bayar) ?>">
+									<input type="text" name="total" id="total" class="form-control" value="<?php echo number_format($total_bayar) ?>" readonly>
 								</td>
-								<td>
-									<button type="submit" class="btn btn-sm btn-primary">Cetak Struk</button>
-								</td>
+								<td></td>
 							</tr>
+							<tr>
+								<th colspan="5" style="text-align:right;">Diskon</th>
+								<td>
+									<input type="text" value="10%" name="diskon" class="form-control" readonly>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<th colspan="5" style="text-align:right;">Potongan Diskon</th>
+								<td>
+									<input type="text" value="<?php echo number_format($diskon) ?>" name="p_diskon" class="form-control" readonly>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<th colspan="5" style="text-align:right;">Sub Total</th>
+								<td>
+									<input type="text" value="<?php echo $totalsemua ?>" onkeyup="hitung()"  name="sub_total" id="sub_total" class="form-control" readonly>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<th colspan="5" style="text-align:right;">Bayar</th>
+								<td>
+									<input type="number" id="bayar" onkeyup="hitung()" name="bayar" class="form-control">
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="5"></td>
+								<td>
+									<button type="submit" id="cetak" name="cetak" class="btn btn-block btn-primary">Cetak Struk</button>
+								</td>
+								<td></td>
+							</tr>
+							<?php if(isset($_POST['cetak'])): ?>
+							<tr>
+								<td colspan="5"></td>
+								<td>
+									<a href="" id="lanjutkan" name="lanjutkan" class="btn btn-block btn-success">Lanjutkan</a>
+								</td>
+								<td></td>
+							</tr>
+							<?php endif; ?>
+							<tr>
+								<th colspan="5" style="text-align:right;">Kembali</th>
+								<td>
+									<input type="text" id="kembali" name="kembali" class="form-control" readonly>
+								</td>
+								<td></td>
+							</tr>
+
+							</form>
 
 						</tbody>
 					</table>
@@ -141,4 +195,19 @@
 	</div>
 </div>
 
-<?php } ?>
+<?php 
+
+	if(isset($_POST['cetak'])){
+
+		$total = $_POST['total'];
+		$diskon = $_POST['diskon'];
+		$p_diskon = $_POST['p_diskon'];
+		$sub_total = $_POST['sub_total'];
+		$bayar = $_POST['bayar'];
+		$kembali = $_POST['kembali'];
+
+		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,total,diskon,subtotal,bayar,kembali) VALUES ('$kodepj','$total','$diskon','$sub_total','$bayar','$kembali')");
+
+	}
+
+ ?>
