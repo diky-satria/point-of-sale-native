@@ -36,7 +36,7 @@
             <td><?php echo $data['foto'] ?></td>
             <td>
                 <a href="" class="btn btn-sm btn-success">Ubah</a>
-                <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                <a href="" class="btn btn-sm btn-warning">Hapus</a>
             </td>
         </tr>
 
@@ -45,4 +45,4 @@
     </tbody>
 </table>
 
-<a href="" class="btn btn-sm btn-primary">Tambah</a>
+<a href="index.php?halaman=tambahPengguna" class="btn btn-sm btn-primary">Tambah</a>
