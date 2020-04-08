@@ -33,10 +33,13 @@
             <td><?php echo $data['nama'] ?></td>
             <td><?php echo $data['email'] ?></td>
             <td><?php echo $data['role'] ?></td>
-            <td><?php echo $data['foto'] ?></td>
             <td>
-                <a href="" class="btn btn-sm btn-success">Ubah</a>
-                <a href="" class="btn btn-sm btn-warning">Hapus</a>
+            	<img src="fotoPengguna/<?php echo $data['foto'] ?>" width="60">
+            </td>
+            <td><?php echo $data['tanggal_daftar'] ?></td>
+            <td>
+                <a href="index.php?halaman=ubahPengguna&id=<?php echo $data['id_pengguna'] ?>" class="btn btn-sm btn-success">Ubah</a>
+                <a onclick="return confirm('yakin ingin menhapus ?')" href="index.php?halaman=hapusPengguna&id=<?php echo $data['id_pengguna'] ?>" class="btn btn-sm btn-danger">Hapus</a>
             </td>
         </tr>
 

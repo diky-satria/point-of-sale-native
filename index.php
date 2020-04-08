@@ -208,6 +208,15 @@
                 if($_GET['halaman'] == 'hapusBarang'){
                   include 'hapusBarang.php';
                 }
+                if($_GET['halaman'] == 'tambahPengguna'){
+                  include 'tambahPengguna.php';
+                }
+                if($_GET['halaman'] == 'ubahPengguna'){
+                  include 'ubahPengguna.php';
+                }
+                if($_GET['halaman'] == 'hapusPengguna'){
+                  include 'hapusPengguna.php';
+                }
               }
 
              ?>
