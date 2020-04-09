@@ -22,9 +22,7 @@
 				<button type="submit" name="tambahkan" class="btn btn-primary">Tambahkan</button>
 			</div>
 			<div class="col-md-6">
-				<div class="form-group float-right">
-					<input type="text" name="nama_pelanggan" class="form-control" placeholder="nama pembeli">
-				</div>
+				
 			</div>
 		</div>
 	</form>

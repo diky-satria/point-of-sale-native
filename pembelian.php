@@ -20,7 +20,7 @@
 								<tr>
 									<td>Tanggal</td>
 									<td>:</td>
-									<td><?php echo $data['tanggal_pembelian'] ?></td>
+									<td><?php echo date('d-M-Y H:i:s', strtotime($data['tanggal_pembelian'])) ?></td>
 								</tr>
 							</table>
 						</div>
@@ -81,7 +81,6 @@
 
 									<form method="post">
 
-									<input type="hidden" name="kodekode" value=>
 									<tr>
 										<th colspan="5" style="text-align:right;">Total</th>
 										<td>
@@ -110,7 +109,13 @@
 										</td>
 										<td></td>
 									</tr>
-									
+									<tr>
+										<th colspan="5" style="text-align:right;">Bayar</th>
+										<td>
+											<input type="text" id="bayar" name="bayar" class="form-control" value="<?php echo number_format($data['bayar']) ?>" readonly>
+										</td>
+										<td></td>
+									</tr>
 									<tr>
 										<td colspan="5"></td>
 										<td>
