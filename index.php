@@ -223,6 +223,9 @@
                 if($_GET['halaman'] == 'hapusPembelian'){
                   include 'hapusPembelian.php';
                 }
+                if($_GET['halaman'] == 'pembelian'){
+                  include 'pembelian.php';
+                }
               }
 
              ?>

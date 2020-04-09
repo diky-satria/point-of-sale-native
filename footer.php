@@ -61,8 +61,8 @@
 		if(!isNaN(hasil)){
 			document.getElementById('kembali').value = hasil;
 		}
-
 	}
+
   </script>
 
 </body>

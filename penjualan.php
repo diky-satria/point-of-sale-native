@@ -77,7 +77,7 @@
 	
 	<div class="row">
 		<div class="col-md">
-			<div class="card bg-gray">
+			<div class="card bg-gray mb-3">
 				<div class="card-body">
 					<h4 class="mb-4 text-gray-800">Data Penjualan</h4>
 					<table class="table">
@@ -126,10 +126,11 @@
 
 							<form method="post">
 
+							<input type="hidden" name="kodekode" value=<?php echo $kodepj ?>>
 							<tr>
 								<th colspan="5" style="text-align:right;">Total</th>
 								<td>
-									<input type="text" name="total" id="total" class="form-control" value="<?php echo number_format($total_bayar) ?>" readonly>
+									<input type="text" name="total" id="total" class="form-control" value="<?php echo $total_bayar ?>" readonly>
 								</td>
 								<td></td>
 							</tr>
@@ -143,7 +144,7 @@
 							<tr>
 								<th colspan="5" style="text-align:right;">Potongan Diskon</th>
 								<td>
-									<input type="text" value="<?php echo number_format($diskon) ?>" name="p_diskon" class="form-control" readonly>
+									<input type="text" value="<?php echo $diskon ?>" name="p_diskon" class="form-control" readonly>
 								</td>
 								<td></td>
 							</tr>
@@ -162,21 +163,19 @@
 								<td></td>
 							</tr>
 							<tr>
-								<td colspan="5"></td>
+								<th colspan="5" style="text-align:right;">Pembeli</th>
 								<td>
-									<button type="submit" id="cetak" name="cetak" class="btn btn-block btn-primary">Cetak Struk</button>
+									<input type="text" id="pembeli" name="pembeli" class="form-control">
 								</td>
 								<td></td>
 							</tr>
-							<?php if(isset($_POST['cetak'])): ?>
 							<tr>
 								<td colspan="5"></td>
 								<td>
-									<a href="" id="lanjutkan" name="lanjutkan" class="btn btn-block btn-success">Lanjutkan</a>
+									<button type="submit" id="cetak" name="cetak" class="btn btn-block btn-primary">Bayar</button>
 								</td>
 								<td></td>
 							</tr>
-							<?php endif; ?>
 							<tr>
 								<th colspan="5" style="text-align:right;">Kembali</th>
 								<td>
@@ -199,6 +198,8 @@
 
 	if(isset($_POST['cetak'])){
 
+		$kodekode = $_POST['kodekode'];
+		$pembeli = $_POST['pembeli'];
 		$total = $_POST['total'];
 		$diskon = $_POST['diskon'];
 		$p_diskon = $_POST['p_diskon'];
@@ -206,7 +207,12 @@
 		$bayar = $_POST['bayar'];
 		$kembali = $_POST['kembali'];
 
-		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,total,diskon,subtotal,bayar,kembali) VALUES ('$kodepj','$total','$diskon','$sub_total','$bayar','$kembali')");
+		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total,diskon,potongan_diskon,subtotal,bayar,kembali) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali')");
+		?>
+		<script type="text/javascript">
+		window.location.href="index.php?halaman=pembelian&kodepj=<?php echo $kodekode ?>";
+		</script>
+		<?php
 
 	}
 
