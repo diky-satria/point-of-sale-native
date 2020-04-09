@@ -49,4 +49,9 @@
     </tbody>
 </table>
 
-<a href="index.php?halaman=tambahBarang" class="btn btn-sm btn-primary">Tambah</a>
+<div class="row mt-3 mb-3">
+    <div class="col-md">
+        <a href="index.php?halaman=tambahBarang" class="btn btn-sm btn-primary">Tambah</a>
+        
+    </div>
+</div>
