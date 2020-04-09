@@ -84,7 +84,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.php?halaman=laporan">
+        <a class="nav-link" data-toggle="modal" data-target="#laporan">
           <i class="fas fa-fw fa-user"></i>
           <span>laporan</span></a>
       </li>

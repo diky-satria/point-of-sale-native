@@ -1,16 +1,18 @@
 <?php 
+
+	include '../koneksi.php';
+
+	$filename = "laporan_penjualan_pertanggal-(".date('d-m-Y').").xls";
+
+	header("content-disposition: attachment; filename= '$filename'");
+	header("content-type: application/vdn.mc-exel");
+
+ ?>
+
+ <?php 
 	
-	include 'koneksi.php';
-
-    $tglm = '-';
-    $tgla = '-';
-
-    if(isset($_POST['cari'])){
-
-        $tglm = $_POST['tglm'];
-        $tgla = $_POST['tgla'];
-
-    }
+	$tglm = $_GET['tglm'];
+	$tgla = $_GET['tgla'];
 
  ?>
 <!-- Page Heading -->
@@ -59,12 +61,9 @@
 
         <?php } ?>
         <tr>
-            <th colspan="4"><center>Total</center></th>
+            <td colspan="4"></td>
             <td><b><?php echo number_format($total) ?></b></td>
         </tr>
 
     </tbody>
 </table>
-
-<a target="_blank" href="laporan/laporan_penjualan_tanggal_pdf.php?tglm=<?php echo $tglm ?>&tgla=<?php echo $tgla ?>" class="btn btn-primary btn-sm">ExportToPdf</a>
-<a href="laporan/laporan_penjualan_tanggal_exel.php?tglm=<?php echo $tglm ?>&tgla=<?php echo $tgla ?>" class="btn btn-secondary btn-sm">ExportToExel</a>

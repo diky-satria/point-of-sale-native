@@ -16,25 +16,29 @@
 
 					<div class="row">
 						<div class="col-md-4">
-							<table class="table">
+							<table class="table table-sm">
 								<tr>
 									<td>Tanggal</td>
 									<td>:</td>
-									<td><?php echo date('d-M-Y H:i:s', strtotime($data['tanggal_pembelian'])) ?></td>
+									<td><?php echo date('d-M-Y', strtotime($data['tanggal_pembelian'])) ?></td>
 								</tr>
-							</table>
-						</div>
-						<div class="col-md-4">
-							<table class="table">
 								<tr>
 									<td>Kode</td>
 									<td>:</td>
 									<td><?php echo $data['kode_penjualan'] ?></td>
-								</tr>	
+								</tr>
 							</table>
 						</div>
 						<div class="col-md-4">
-							<table class="table">
+							
+						</div>
+						<div class="col-md-4">
+							<table class="table table-sm">
+								<tr>
+									<td>Kasir</td>
+									<td>:</td>
+									<td><?php echo $data['kasir'] ?></td>
+								</tr>
 								<tr>
 									<td>Pembeli</td>
 									<td>:</td>

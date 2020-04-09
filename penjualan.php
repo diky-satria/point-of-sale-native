@@ -2,10 +2,13 @@
 
 	error_reporting(0);
 	$kodepj = $_GET['kodepj'];
+	$pengguna = $_SESSION['pengguna'];
 
  ?>
 <div class="container">
-
+<!-- <pre>
+	<?php //print_r($pengguna) ?>
+</pre> -->
 	<form method="post">
 		<div class="row">
 			<div class="col-md-2">
@@ -204,8 +207,10 @@
 		$sub_total = $_POST['sub_total'];
 		$bayar = $_POST['bayar'];
 		$kembali = $_POST['kembali'];
+		$tanggal_pembelian = date('Y-m-d');
+		$kasir = $pengguna['nama'];
 
-		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total,diskon,potongan_diskon,subtotal,bayar,kembali) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali')");
+		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total,diskon,potongan_diskon,subtotal,bayar,kembali,tanggal_pembelian,kasir) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali','$tanggal_pembelian','$kasir')");
 		?>
 		<script type="text/javascript">
 		window.location.href="index.php?halaman=pembelian&kodepj=<?php echo $kodekode ?>";

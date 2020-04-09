@@ -42,6 +42,16 @@ $html = '<div class="container">
 					<div class="col-md-4">
 							<table class="table">
 								<tr>
+									<td>Kasir &nbsp;&nbsp;&nbsp;&nbsp;</td>
+									<td>:</td>
+									<td>'.$data['kasir'].'</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-4">
+							<table class="table">
+								<tr>
 									<td>Pembeli</td>
 									<td>:</td>
 									<td>'.$data['pembeli'].'</td>
