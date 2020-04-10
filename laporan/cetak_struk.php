@@ -103,7 +103,7 @@ $html = '<div class="container">
 									<tr>
 										<td colspan="5" style="text-align:right;">Total</td>
 										<td>:</td>
-										<td>'.number_format($data['total']).'</td>
+										<td>'.number_format($data['total_beli']).'</td>
 									<tr>
 								</thead>
 								<tbody>

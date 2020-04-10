@@ -2,7 +2,6 @@
   
   session_start();
   include 'koneksi.php';
-  include 'header.php';
   include 'kodepj.php';
 
   $kodepj = $kodes;
@@ -13,6 +12,7 @@
 
  ?>
 
+ <?php include 'header.php'; ?>
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -228,11 +228,18 @@
                 }
                 if($_GET['halaman'] == 'profil'){
                   include 'profil.php';
+                }
                 if($_GET['halaman'] == 'hapusPembelian'){
                   include 'hapusPembelian.php';
                 }
                 if($_GET['halaman'] == 'pembelian'){
                   include 'pembelian.php';
+                }
+                if($_GET['halaman'] == 'tambah_penjualan'){
+                  include 'tambah_penjualan.php';
+                }
+                if($_GET['halaman'] == 'kurang_penjualan'){
+                  include 'kurang_penjualan.php';
                 }
               }
 

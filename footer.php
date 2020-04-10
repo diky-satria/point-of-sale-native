@@ -71,6 +71,7 @@
   </script>
 
   <script type="text/javascript">
+
   	function sum(){
 
 	  		var harga_beli = document.getElementById('harga_beli').value;

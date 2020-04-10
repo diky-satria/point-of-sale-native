@@ -88,7 +88,7 @@
 									<tr>
 										<th colspan="5" style="text-align:right;">Total</th>
 										<td>
-											<input type="text" name="total" id="total" class="form-control" value="<?php echo number_format($data['total']) ?>" readonly>
+											<input type="text" name="total" id="total" class="form-control" value="<?php echo number_format($data['total_beli']) ?>" readonly>
 										</td>
 										<td></td>
 									</tr>

@@ -112,7 +112,9 @@
 								<td><?php echo $tampil['jumlah'] ?></td>
 								<td><?php echo number_format($tampil['total']) ?></td>
 								<td>
-									<a onclick="return confirm('Lanjutkan >>>')" class="btn btn-sm btn-danger" href="index.php?halaman=hapusPembelian&id=<?php echo $tampil['id_penjualan_barang'] ?>&kodepj=<?php echo $tampil['kode_penjualan'] ?>&jumlah=<?php echo $tampil['jumlah'] ?>&barcode=<?php echo $data['kode_barcode'] ?>">Hapus</a>
+									<a href="index.php?halaman=kurang_penjualan&kode_barcode=<?php echo $tampil['kode_barcode'] ?>&id=<?php echo $tampil['id_penjualan_barang'] ?>&kode_penjualan=<?php echo $tampil['kode_penjualan'] ?>" class="btn btn-sm btn-success"><i class="fas fa-minus" title="kurang"></i></a>
+									<a href="index.php?halaman=tambah_penjualan&kode_barcode=<?php echo $tampil['kode_barcode'] ?>&id=<?php echo $tampil['id_penjualan_barang'] ?>&kode_penjualan=<?php echo $tampil['kode_penjualan'] ?>" class="btn btn-sm btn-success"><i class="fas fa-plus" title="tambah"></i></a>
+									<a onclick="return confirm('Lanjutkan >>>')" class="btn btn-sm btn-danger" href="index.php?halaman=hapusPembelian&id=<?php echo $tampil['id_penjualan_barang'] ?>&kodepj=<?php echo $tampil['kode_penjualan'] ?>&jumlah=<?php echo $tampil['jumlah'] ?>&barcode=<?php echo $tampil['kode_barcode'] ?>"><i class="fas fa-trash-alt" title="hapus"></i></a>
 								</td>
 							</tr>
 
@@ -210,7 +212,7 @@
 		$tanggal_pembelian = date('Y-m-d');
 		$kasir = $pengguna['nama'];
 
-		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total,diskon,potongan_diskon,subtotal,bayar,kembali,tanggal_pembelian,kasir) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali','$tanggal_pembelian','$kasir')");
+		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total_beli,diskon,potongan_diskon,subtotal,bayar,kembali,tanggal_pembelian,kasir) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali','$tanggal_pembelian','$kasir')");
 		?>
 		<script type="text/javascript">
 		window.location.href="index.php?halaman=pembelian&kodepj=<?php echo $kodekode ?>";
