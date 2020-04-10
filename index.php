@@ -196,6 +196,34 @@
                     include 'penjualan.php';
                   }
                 }
+                if($_GET['halaman'] == 'admin_pengguna'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'admin_pengguna.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'ubahPengguna'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'ubahPengguna.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'hapusPengguna'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'hapusPengguna.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'tambahPengguna'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'tambahPengguna.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
                 if($_GET['halaman'] == 'barang'){
                   include 'barang.php';
                 }
@@ -216,15 +244,6 @@
                 }
                 if($_GET['halaman'] == 'hapusBarang'){
                   include 'hapusBarang.php';
-                }
-                if($_GET['halaman'] == 'tambahPengguna'){
-                  include 'tambahPengguna.php';
-                }
-                if($_GET['halaman'] == 'ubahPengguna'){
-                  include 'ubahPengguna.php';
-                }
-                if($_GET['halaman'] == 'hapusPengguna'){
-                  include 'hapusPengguna.php';
                 }
                 if($_GET['halaman'] == 'profil'){
                   include 'profil.php';

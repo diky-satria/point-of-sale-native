@@ -13,7 +13,7 @@
 <div class="row">
 	<div class="col-md">
 
-		<a href="index.php?halaman=pengguna" class="btn btn-sm btn-dark mb-3">Kembali</a>
+		<a href="index.php?halaman=admin_pengguna" class="btn btn-sm btn-dark mb-3">Kembali</a>
 
 		<div class="card">
 		  <div class="card-body">
@@ -87,7 +87,7 @@
 
 			<script type="text/javascript">
 			alert('pengguna berhasil diubah');
-			window.location.href="index.php?halaman=pengguna";
+			window.location.href="index.php?halaman=admin_pengguna";
 			</script>
 
 			<?php
@@ -99,7 +99,7 @@
 
 			<script type="text/javascript">
 			alert('pengguna berhasil diubah');
-			window.location.href="index.php?halaman=pengguna";
+			window.location.href="index.php?halaman=admin_pengguna";
 			</script>
 
 			<?php

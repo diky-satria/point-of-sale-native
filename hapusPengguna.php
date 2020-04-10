@@ -8,14 +8,14 @@
 		?>
 		<script type="text/javascript">
 		alert('pengguna berhasil dihapus');
-		window.location.href="index.php?halaman=pengguna";
+		window.location.href="index.php?halaman=admin_pengguna";
 		</script>
 		<?php 
 	}else{
 		?>
 		<script type="text/javascript">
 		alert('pengguna gagal dihapus');
-		window.location.href="index.php?halaman=pengguna";
+		window.location.href="index.php?halaman=admin_pengguna";
 		</script>
 		<?php 
 	}
