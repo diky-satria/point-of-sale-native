@@ -16,6 +16,38 @@
 	  </div>
 	</div>
 
+	<!-- Modal laporan-->
+	<div class="modal fade" id="laporan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Laporan Penjualan</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        
+	      	<form action="index.php?halaman=laporan" method="post">
+	      		<div class="form-group">
+	      			<label>Tanggal Mulai</label>
+	      			<input type="date" name="tglm" class="form-control" required>
+	      		</div>
+	      		<div class="form-group">
+	      			<label>Tanggal Akhir</label>
+	      			<input type="date" name="tgla" class="form-control" required>
+	      		</div>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+	        <button type="submit" name="cari" class="btn btn-primary">Cari</button>
+	      	</form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 <!-- Bootstrap core JavaScript-->
   <script src="sbadmin2/vendor/jquery/jquery.min.js"></script>
   <script src="sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -50,6 +82,19 @@
 	  		}
 
 	  	}
+
+	function hitung(){
+
+		var bayar = document.getElementById('bayar').value;
+		var sub_total = document.getElementById('sub_total').value;
+
+		var hasil = parseInt(bayar) - parseInt(sub_total);
+
+		if(!isNaN(hasil)){
+			document.getElementById('kembali').value = hasil;
+		}
+	}
+
   </script>
 
 </body>

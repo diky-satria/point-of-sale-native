@@ -3,6 +3,9 @@
   session_start();
   include 'koneksi.php';
   include 'header.php';
+  include 'kodepj.php';
+
+  $kodepj = $kodes;
 
   if(!isset($_SESSION['pengguna'])){
     header('location:login.php');
@@ -77,7 +80,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.php?halaman=penjualan">
+        <a class="nav-link" href="index.php?halaman=penjualan&kodepj=<?php echo $kodepj ?>">
           <i class="fas fa-fw fa-user"></i>
           <span>penjualan</span></a>
       </li>
@@ -87,7 +90,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.php?halaman=laporan">
+        <a class="nav-link" data-toggle="modal" data-target="#laporan">
           <i class="fas fa-fw fa-user"></i>
           <span>laporan</span></a>
       </li>
@@ -225,6 +228,11 @@
                 }
                 if($_GET['halaman'] == 'profil'){
                   include 'profil.php';
+                if($_GET['halaman'] == 'hapusPembelian'){
+                  include 'hapusPembelian.php';
+                }
+                if($_GET['halaman'] == 'pembelian'){
+                  include 'pembelian.php';
                 }
               }
 
