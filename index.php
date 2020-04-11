@@ -224,6 +224,20 @@
                     include 'penjualan.php';
                   }
                 }
+                if($_GET['halaman'] == 'penjualan_collapse'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'penjualan_collapse.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'kembalikan_collapse'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'kembalikan_collapse.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
                 if($_GET['halaman'] == 'barang'){
                   include 'barang.php';
                 }

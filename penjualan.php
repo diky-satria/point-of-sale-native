@@ -213,7 +213,11 @@
 		$kasir = $pengguna['nama'];
 
 		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total_beli,diskon,potongan_diskon,subtotal,bayar,kembali,tanggal_pembelian,kasir) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali','$tanggal_pembelian','$kasir')");
+
+		$sql_telah_dibeli = $koneksi->query("UPDATE penjualan SET status='dibeli' WHERE kode_penjualan='$kodekode'");
+
 		?>
+
 		<script type="text/javascript">
 		window.location.href="index.php?halaman=pembelian&kodepj=<?php echo $kodekode ?>";
 		</script>

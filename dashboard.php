@@ -14,10 +14,13 @@
 
 	}
 
-	// jumlah pengguna
+	// jumlah pengguna dan crud
 	$sql_pengguna = $koneksi->query("SELECT * FROM pengguna");
 	$data_pengguna = $sql_pengguna->num_rows;
 
+	//penjualan collapse
+	$sql_collapse = $koneksi->query("SELECT * FROM penjualan WHERE status = 'collapse'");
+	$data_collapse = $sql_collapse->num_rows;
 
  ?>
 <!-- Page Heading -->
@@ -28,12 +31,12 @@
 
 	<!-- Earnings (Monthly) Card Example -->
 	<div class="col-xl-3 col-md-6 mb-4">
-	  <div class="card border-left-primary shadow h-100 py-2">
+	  <div class="card border-left-secondary shadow h-100 py-2">
 	    <div class="card-body">
 	      <div class="row no-gutters align-items-center">
 	        <div class="col mr-2">
-	          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Penjualan Hari Ini</div>
-	          <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. <?php echo number_format($penjualan_hari_ini) ?></div>
+	          <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Penjualan Hari Ini</div>
+	          <div class="h3 mb-0 font-weight-bold text-gray-800">Rp. <?php echo number_format($penjualan_hari_ini) ?></div>
 	        </div>
 	        <div class="col-auto">
 	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -46,12 +49,12 @@
 	<!-- Earnings (Monthly) Card Example -->
 	<div class="col-xl-3 col-md-6 mb-4">
 	  <a href="index.php?halaman=admin_pengguna" style="text-decoration:none;">
-	  <div class="card border-left-primary shadow h-100 py-2">
+	  <div class="card border-left-secondary shadow h-100 py-2">
 	    <div class="card-body">
 	      <div class="row no-gutters align-items-center">
 	        <div class="col mr-2">
-	          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pengguna</div>
-	          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data_pengguna ?></div>
+	          <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Pengguna</div>
+	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_pengguna ?></div>
 	        </div>
 	        <div class="col-auto">
 	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -64,12 +67,13 @@
 
 	<!-- Earnings (Monthly) Card Example -->
 	<div class="col-xl-3 col-md-6 mb-4">
-	  <div class="card border-left-primary shadow h-100 py-2">
+	<a href="index.php?halaman=penjualan_collapse" style="text-decoration:none;">
+	  <div class="card border-left-danger shadow h-100 py-2">
 	    <div class="card-body">
 	      <div class="row no-gutters align-items-center">
 	        <div class="col mr-2">
-	          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-	          <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+	          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Penjualan Collapse</div>
+	          <div class="h3 mb-0 font-weight-bold text-danger"><?php echo $data_collapse ?></div>
 	        </div>
 	        <div class="col-auto">
 	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -77,6 +81,7 @@
 	      </div>
 	    </div>
 	  </div>
+	</a>
 	</div>
 
 	<!-- Earnings (Monthly) Card Example -->
