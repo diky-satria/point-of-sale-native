@@ -238,6 +238,13 @@
                     include 'penjualan.php';
                   }
                 }
+                if($_GET['halaman'] == 'supplier'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'supplier.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
                 if($_GET['halaman'] == 'barang'){
                   include 'barang.php';
                 }
