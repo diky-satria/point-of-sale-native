@@ -41,6 +41,18 @@
 				   </div>
 			    	<div class="col-md-6">
 			    		<div class="form-group">
+					  	<label>Supplier</label>
+					  	<select class="form-control" name="supplier" required>
+					  		<option disabled selected>-- PILIH --</option>
+					  		<?php 
+					  			$sql_supplier = $koneksi->query("SELECT * FROM supplier");
+					  			while($data_supplier = $sql_supplier->fetch_assoc()){
+					  		 ?>
+					  		<option value="<?php echo $data_supplier['id_supplier'] ?>"><?php echo $data_supplier['nama_supplier'] ?></option>
+					  		<?php } ?>
+					  	</select>
+					  </div>
+			    		<div class="form-group">
 						  	<label>Harga Beli</label>
 						  	<input type="number" onkeyup="sum()" id="harga_beli" name="harga_beli" class="form-control" required>
 						  </div>
@@ -77,8 +89,9 @@
 		$harga_beli = $_POST['harga_beli'];
 		$harga_jual = $_POST['harga_jual'];
 		$untung = $_POST['untung'];
+		$supplier = $_POST['supplier'];
 
-		$sql = $koneksi->query("INSERT INTO barang (kode_barcode, nama_barang, satuan, stok, harga_beli, harga_jual, untung) VALUES ('$barcode','$nama_barang','$satuan','$stok','$harga_beli','$harga_jual','$untung')");
+		$sql = $koneksi->query("INSERT INTO barang (kode_barcode, nama_barang, satuan, stok, supplier, harga_beli, harga_jual, untung) VALUES ('$barcode','$nama_barang','$satuan','$stok','$supplier','$harga_beli','$harga_jual','$untung')");
 
 		if($sql){
 			?>

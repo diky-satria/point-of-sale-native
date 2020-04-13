@@ -14,6 +14,7 @@
             <th>Nama Barang</th>
             <th>Satuan</th>
             <th>Stok</th>
+            <th>Supplier</th>
             <th>Harga Beli</th>
             <th>Harga Jual</th>
             <th>Untung</th>
@@ -25,7 +26,8 @@
     <?php 
 
     	$no=1;
-    	$sql = $koneksi->query("SELECT * FROM barang");
+    	$sql = $koneksi->query("SELECT * FROM barang JOIN supplier ON 
+                                barang.supplier=supplier.id_supplier");
     	while($data = $sql->fetch_assoc()){
 
      ?>
@@ -36,6 +38,7 @@
             <td><?php echo $data['nama_barang'] ?></td>
             <td><?php echo $data['satuan'] ?></td>
             <td><?php echo $data['stok'] ?></td>
+            <td><?php echo $data['nama_supplier'] ?></td>
             <td><?php echo number_format($data['harga_beli']) ?></td>
             <td><?php echo number_format($data['harga_jual']) ?></td>
             <td><?php echo number_format($data['untung']) ?></td>

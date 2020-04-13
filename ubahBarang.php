@@ -3,10 +3,12 @@
 	include 'koneksi.php';
 	$id = $_GET['id'];
 
-	$get = $koneksi->query("SELECT * FROM barang WHERE id_barang = '$id'");
+	$get = $koneksi->query("SELECT * FROM barang JOIN supplier ON 
+							barang.supplier=supplier.id_supplier WHERE id_barang = '$id'");
 	$data = $get->fetch_assoc();
 
 	$satuan = $data['satuan'];
+	$supplier = $data['supplier'];
 
  ?>
 <!-- Page Heading -->
@@ -47,6 +49,18 @@
 				   </div>
 			    	<div class="col-md-6">
 			    		<div class="form-group">
+					  	<label>Supplier</label>
+					  	<select class="form-control" name="supplier" required>
+					  		<option disabled selected>-- PILIH --</option>
+					  		<?php 
+					  			$sql_supplier = $koneksi->query("SELECT * FROM supplier");
+					  			while($data_supplier = $sql_supplier->fetch_assoc()){
+					  		 ?>
+					  		<option value="<?php echo $data_supplier['id_supplier'] ?>" <?php if($supplier == $data_supplier['id_supplier']){ echo 'selected'; } ?>><?php echo $data_supplier['nama_supplier'] ?></option>
+					  		<?php } ?>
+					  	</select>
+					  </div>
+			    		<div class="form-group">
 						  	<label>Harga Beli</label>
 						  	<input type="number" onkeyup="sum()" id="harga_beli" name="harga_beli" class="form-control" value="<?php echo $data['harga_beli'] ?>" required>
 						  </div>
@@ -83,8 +97,9 @@ if(isset($_POST['ubah'])){
 	$harga_beli = $_POST['harga_beli'];
 	$harga_jual = $_POST['harga_jual'];
 	$untung = $_POST['untung'];
+	$supplier = $_POST['supplier'];
 
-	$sql = $koneksi->query("UPDATE barang SET kode_barcode='$barcode', nama_barang='$nama_barang', satuan='$satuan', stok='$stok', harga_beli='$harga_beli', harga_jual='$harga_jual', untung='$untung' WHERE id_barang = '$id'");
+	$sql = $koneksi->query("UPDATE barang SET kode_barcode='$barcode', nama_barang='$nama_barang', satuan='$satuan', stok='$stok', supplier='$supplier', harga_beli='$harga_beli', harga_jual='$harga_jual', untung='$untung' WHERE id_barang = '$id'");
 
 	if($sql){
 		?>

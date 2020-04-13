@@ -245,6 +245,27 @@
                     include 'penjualan.php';
                   }
                 }
+                if($_GET['halaman'] == 'tambah_supplier'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'tambah_supplier.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'hapus_supplier'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'hapus_supplier.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'ubah_supplier'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'ubah_supplier.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
                 if($_GET['halaman'] == 'barang'){
                   include 'barang.php';
                 }
