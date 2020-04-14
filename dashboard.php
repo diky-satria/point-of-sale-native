@@ -59,7 +59,7 @@
 	          <div class="h3 mb-0 font-weight-bold text-gray-800">Rp. <?php echo number_format($penjualan_hari_ini) ?></div>
 	        </div>
 	        <div class="col-auto">
-	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	          <i class="fas fa-comments-dollar fa-2x text-gray-300"></i>
 	        </div>
 	      </div>
 	    </div>
@@ -96,7 +96,7 @@
 	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_pengguna ?></div>
 	        </div>
 	        <div class="col-auto">
-	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	          <i class="fas fa-users fa-2x text-gray-300"></i>
 	        </div>
 	      </div>
 	    </div>
@@ -116,7 +116,7 @@
 	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_supplier ?></div>
 	        </div>
 	        <div class="col-auto">
-	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	          <i class="fas fa-truck-moving fa-2x text-gray-300"></i>
 	        </div>
 	      </div>
 	    </div>
@@ -135,7 +135,7 @@
 	          <div class="h3 mb-0 font-weight-bold text-danger"><?php echo $data_collapse ?></div>
 	        </div>
 	        <div class="col-auto">
-	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	          <i class="fas fa-recycle fa-2x text-gray-300"></i>
 	        </div>
 	      </div>
 	    </div>
@@ -154,7 +154,7 @@
 	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_diskon['diskon'] ?>%</div>
 	        </div>
 	        <div class="col-auto">
-	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	          <i class="fas fa-percent fa-2x text-gray-300"></i>
 	        </div>
 	      </div>
 	    </div>
@@ -173,7 +173,7 @@
 	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_barang_masuk ?></div>
 	        </div>
 	        <div class="col-auto">
-	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	          <i class="fas fa-dolly fa-2x text-gray-300"></i>
 	        </div>
 	      </div>
 	    </div>
@@ -192,7 +192,7 @@
 	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_barang_masuk_terkonfirmasi; ?></div>
 	        </div>
 	        <div class="col-auto">
-	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	          <i class="fas fa-history fa-2x text-gray-300"></i>
 	        </div>
 	      </div>
 	    </div>
