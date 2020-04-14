@@ -98,7 +98,7 @@
 
 			<script type="text/javascript">
 			alert('Barang berhasil ditambahkan');
-			window.location.href="index.php?halaman=barang";
+			window.location.href="index.php?halaman=admin_barang";
 			</script>
 
 			<?php

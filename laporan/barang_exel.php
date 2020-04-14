@@ -1,6 +1,11 @@
 <?php 
-	
-	include 'koneksi.php';
+
+	include '../koneksi.php';
+
+	$filename = "laporan_barang-(".date('d-m-Y').").xls";
+
+	header("content-disposition: attachment; filename= '$filename'");
+	header("content-type: application/vdn.mc-exel");
 
  ?>
 <!-- Page Heading -->
@@ -18,7 +23,6 @@
             <th>Harga Beli</th>
             <th>Harga Jual</th>
             <th>Untung</th>
-            <th>Opsi</th>
         </tr>
     </thead>
     <tbody>
@@ -42,19 +46,8 @@
             <td><?php echo number_format($data['harga_beli']) ?></td>
             <td><?php echo number_format($data['harga_jual']) ?></td>
             <td><?php echo number_format($data['untung']) ?></td>
-            <td>
-            	<a href="index.php?halaman=ubahBarang&id=<?php echo $data['id_barang'] ?>" class="btn btn-sm btn-success">ubah</a>
-            	<a href="index.php?halaman=hapusBarang&id=<?php echo $data['id_barang'] ?>" onclick="return confirm('yakin ingin menghapus ?')" class="btn btn-sm btn-danger">hapus</a>
-            </td>
         </tr>
 
         <?php } ?>
     </tbody>
 </table>
-
-<div class="row mt-3 mb-3">
-    <div class="col-md">
-        <a href="index.php?halaman=tambahBarang" class="btn btn-sm btn-primary">Tambah</a>
-        
-    </div>
-</div>

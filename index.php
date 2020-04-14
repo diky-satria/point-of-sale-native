@@ -62,13 +62,21 @@
       <!-- Heading -->
       <div class="sidebar-heading">
         <span>Kasir</span>
-      </div> 
+      </div>
 
-      <!-- Nav Item - Dashboard -->
+      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="index.php?halaman=barang">
-          <i class="fas fa-fw fa-user"></i>
-          <span>barang</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Barang</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="index.php?halaman=cek_barang">Cek Barang</a>
+            <a class="collapse-item" href="index.php?halaman=barang_masuk">Barang Masuk</a>
+            <a class="collapse-item" href="index.php?halaman=riwayat_barang_masuk">Riwayat Barang Masuk</a>
+          </div>
+        </div>
       </li>
 
       <!-- Nav Item - Dashboard -->
@@ -266,8 +274,78 @@
                     include 'penjualan.php';
                   }
                 }
-                if($_GET['halaman'] == 'barang'){
-                  include 'barang.php';
+                if($_GET['halaman'] == 'diskon'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'diskon.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'admin_barang'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'admin_barang.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'tambahBarang'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'tambahBarang.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'ubahBarang'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'ubahBarang.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'hapusBarang'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'hapusBarang.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'admin_barang_masuk'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'admin_barang_masuk.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'ubah_barang_masuk'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'ubah_barang_masuk.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'konfirmasi_barang_masuk'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'konfirmasi_barang_masuk.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'barang_masuk_terkonfirmasi'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'barang_masuk_terkonfirmasi.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'hapus_barang_masuk_terkonfirmasi'){
+                  if($_SESSION['pengguna']['role'] == 'admin'){
+                    include 'hapus_barang_masuk_terkonfirmasi.php';  
+                  }else{
+                    include 'penjualan.php';
+                  }
+                }
+                if($_GET['halaman'] == 'barang_masuk'){
+                  include 'barang_masuk.php';
                 }
                 if($_GET['halaman'] == 'pengguna'){
                   include 'pengguna.php';
@@ -277,15 +355,6 @@
                 }
                 if($_GET['halaman'] == 'laporan'){
                   include 'laporan.php';
-                }
-                if($_GET['halaman'] == 'tambahBarang'){
-                  include 'tambahBarang.php';
-                }
-                if($_GET['halaman'] == 'ubahBarang'){
-                  include 'ubahBarang.php';
-                }
-                if($_GET['halaman'] == 'hapusBarang'){
-                  include 'hapusBarang.php';
                 }
                 if($_GET['halaman'] == 'profil'){
                   include 'profil.php';
@@ -301,6 +370,12 @@
                 }
                 if($_GET['halaman'] == 'kurang_penjualan'){
                   include 'kurang_penjualan.php';
+                }
+                if($_GET['halaman'] == 'cek_barang'){
+                  include 'cek_barang.php';
+                }
+                if($_GET['halaman'] == 'riwayat_barang_masuk'){
+                  include 'riwayat_barang_masuk.php';
                 }
               }
 

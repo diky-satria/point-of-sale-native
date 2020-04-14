@@ -9,7 +9,7 @@
 
 		<script type="text/javascript">
 		alert('Data barang berhasil dihapus');
-		window.location.href="index.php?halaman=barang";
+		window.location.href="index.php?halaman=admin_barang";
 		</script>
 
 		<?php
@@ -18,7 +18,7 @@
 
 		<script type="text/javascript">
 		alert('Data barang gagal dihapus');
-		window.location.href="index.php?halaman=barang";
+		window.location.href="index.php?halaman=admin_barang";
 		</script>
 
 		<?php

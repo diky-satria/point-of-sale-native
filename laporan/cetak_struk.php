@@ -7,7 +7,9 @@ $mpdf = new \Mpdf\Mpdf();
 
 include '../koneksi.php';
 $kode = $_GET['kode_penjualan'];
-$sql_pembelian = $koneksi->query("SELECT * FROM pembelian WHERE kode_penjualan = '$kode'");
+$sql_pembelian = $koneksi->query("SELECT * FROM pembelian
+									JOIN penjualan ON pembelian.kode_penjualan=penjualan.kode_penjualan
+									 WHERE pembelian.kode_penjualan = '$kode'");
 $data = $sql_pembelian->fetch_assoc();
 $kode_penjualan = $data['kode_penjualan'];
 

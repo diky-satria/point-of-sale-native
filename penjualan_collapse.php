@@ -27,8 +27,7 @@
 
             $no =1;
             $sql = $koneksi->query("SELECT * FROM penjualan
-            					 JOIN pembelian ON penjualan.kode_penjualan=pembelian.kode_penjualan
-            					 JOIN barang ON penjualan.kode_barcode=barang.kode_barcode
+            					   JOIN barang ON penjualan.kode_barcode=barang.kode_barcode
 									WHERE penjualan.status = 'collapse'");
             while($data = $sql->fetch_assoc()){
 

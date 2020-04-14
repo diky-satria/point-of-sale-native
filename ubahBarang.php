@@ -106,7 +106,7 @@ if(isset($_POST['ubah'])){
 
 		<script type="text/javascript">
 		alert('Barang berhasil diubah');
-		window.location.href="index.php?halaman=barang";
+		window.location.href="index.php?halaman=admin_barang";
 		</script>
 
 		<?php

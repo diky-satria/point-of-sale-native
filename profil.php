@@ -8,6 +8,8 @@
 <!-- Page Heading -->
 <h4 class="mb-4 text-gray-800">Profil</h4>
 
+<a href="index.php?halaman=penjualan" class="btn btn-sm btn-dark mb-3">Kembali</a>
+
 <div class="card">
 	
 	<div class="card-body">

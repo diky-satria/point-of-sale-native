@@ -26,6 +26,22 @@
 	$sql_supplier = $koneksi->query("SELECT * FROM supplier");
 	$data_supplier = $sql_supplier->num_rows;
 
+	//diskon
+	$sql_diskon = $koneksi->query("SELECT * FROM diskon WHERE id_diskon = 1");
+	$data_diskon = $sql_diskon->fetch_assoc();
+
+	//barang 
+	$sql_barang = $koneksi->query("SELECT * FROM barang");
+	$data_barang = $sql_barang->num_rows;
+
+	//barang_masuk
+	$sql_barang_masuk = $koneksi->query("SELECT * FROM barang_masuk WHERE status='masuk'");
+	$data_barang_masuk = $sql_barang_masuk->num_rows;
+
+	//barang_masuk_terkonfirmasi
+	$barang_masuk_terkonfirmasi = $koneksi->query("SELECT * FROM barang_masuk WHERE status='terkonfirmasi'");
+	$data_barang_masuk_terkonfirmasi = $barang_masuk_terkonfirmasi->num_rows;
+
  ?>
 <!-- Page Heading -->
 <h4 class="mb-4 text-gray-800">Dashboard</h4>
@@ -48,6 +64,25 @@
 	      </div>
 	    </div>
 	  </div>
+	</div>
+
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-3 col-md-6 mb-4">
+	  <a href="index.php?halaman=admin_barang" style="text-decoration:none;">
+	  <div class="card border-left-secondary shadow h-100 py-2">
+	    <div class="card-body">
+	      <div class="row no-gutters align-items-center">
+	        <div class="col mr-2">
+	          <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Barang</div>
+	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_barang ?></div>
+	        </div>
+	        <div class="col-auto">
+	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  </a>
 	</div>
 
 	<!-- Earnings (Monthly) Card Example -->
@@ -107,4 +142,62 @@
 	  </div>
 	</a>
 	</div>
+
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-3 col-md-6 mb-4">
+	<a href="index.php?halaman=diskon" style="text-decoration:none;">
+	  <div class="card border-left-secondary shadow h-100 py-2">
+	    <div class="card-body">
+	      <div class="row no-gutters align-items-center">
+	        <div class="col mr-2">
+	          <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Diskon</div>
+	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_diskon['diskon'] ?>%</div>
+	        </div>
+	        <div class="col-auto">
+	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</a>
+	</div>
+
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-3 col-md-6 mb-4">
+	<a href="index.php?halaman=admin_barang_masuk" style="text-decoration:none;">
+	  <div class="card border-left-secondary shadow h-100 py-2">
+	    <div class="card-body">
+	      <div class="row no-gutters align-items-center">
+	        <div class="col mr-2">
+	          <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Barang Masuk</div>
+	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_barang_masuk ?></div>
+	        </div>
+	        <div class="col-auto">
+	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</a>
+	</div>
+
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-3 col-md-6 mb-4">
+	<a href="index.php?halaman=barang_masuk_terkonfirmasi" style="text-decoration:none;">
+	  <div class="card border-left-secondary shadow h-100 py-2">
+	    <div class="card-body">
+	      <div class="row no-gutters align-items-center">
+	        <div class="col mr-2">
+	          <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Riwayat Barang Masuk </div>
+	          <div class="h3 mb-0 font-weight-bold text-gray-800"><?php echo $data_barang_masuk_terkonfirmasi; ?></div>
+	        </div>
+	        <div class="col-auto">
+	          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</a>
+	</div>
+
 </div>

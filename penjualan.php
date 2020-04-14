@@ -5,7 +5,7 @@
 	$pengguna = $_SESSION['pengguna'];
 
  ?>
-<div class="container">
+<div class="container"> 
 <!-- <pre>
 	<?php //print_r($pengguna) ?>
 </pre> -->
@@ -33,40 +33,54 @@
 	<?php 
 
 		if(isset($_POST['tambahkan'])){
-
 			$kodepj2 = $_POST['kodepj'];
 			$barcode = $_POST['barcode'];
 
+
 			$sql = $koneksi->query("SELECT * FROM barang WHERE kode_barcode = '$barcode'");
+
 			$data = $sql->fetch_assoc();
 			$kode_barcode = $data['kode_barcode'];
 			$harga = $data['harga_jual'];
 			$jumlah = 1;
 			$total = $harga * $jumlah;
 
+			if($kode_barcode == $barcode){
+				
+				$sql_stok = $koneksi->query("SELECT * FROM barang WHERE kode_barcode='$barcode'");
+				while($stok = $sql_stok->fetch_assoc()){
+					$stok_barang = $stok['stok'];
 
-			$sql_stok = $koneksi->query("SELECT * FROM barang WHERE kode_barcode='$barcode'");
-			while($stok = $sql_stok->fetch_assoc()){
-				$stok_barang = $stok['stok'];
+					if($stok_barang == 0){
+						?>
 
-				if($stok_barang == 0){
-					?>
+						<script type="text/javascript">
+						alert('Stok barang sedang kosong !');
+						window.location.href="index.php?halaman=penjualan&kodepj=<?php echo $kodepj ?>";
+						</script>
 
-					<script type="text/javascript">
-					alert('Stok barang sedang kosong !');
-					window.location.href="index.php?halaman=penjualan&kodepj=<?php echo $kodepj ?>";
-					</script>
+						<?php
+					}else{
 
-					<?php
-				}else{
+						$kasir = $pengguna['nama'];
 
-					$koneksi->query("INSERT INTO penjualan (kode_penjualan, kode_barcode, harga, jumlah, total) VALUES ('$kodepj2','$barcode','$harga','$jumlah','$total')");
+						$koneksi->query("INSERT INTO penjualan (kode_penjualan, kode_barcode, harga, jumlah, total,kasir) VALUES ('$kodepj2','$barcode','$harga','$jumlah','$total','$kasir')");
 
-					$koneksi->query("UPDATE barang SET stok=(stok-1) WHERE kode_barcode = '$kode_barcode'");
+						$koneksi->query("UPDATE barang SET stok=(stok-1) WHERE kode_barcode = '$kode_barcode'");
+
+					}
 
 				}
-
+			}else{
+				?>
+				<script type="text/javascript">
+				alert('barang tidak terdaftar');
+				</script>
+				<?php
 			}
+
+
+			
 
 		}
 
@@ -119,9 +133,13 @@
 							</tr>
 
 							<?php 
+
+								$sql_diskon = $koneksi->query("SELECT * FROM diskon WHERE id_diskon = 1");
+								$data_diskon = $sql_diskon->fetch_assoc();
+								$diskondiskon = $data_diskon['diskon'];
 								
 								$total_bayar = $total_bayar + $tampil['total']; 
-								$diskon = $total_bayar * 10 / 100;
+								$diskon = $total_bayar * $diskondiskon / 100;
 								$totalsemua = $total_bayar - $diskon;
 							?>
 
@@ -140,7 +158,7 @@
 							<tr>
 								<th colspan="5" style="text-align:right;">Diskon</th>
 								<td>
-									<input type="text" value="10%" name="diskon" class="form-control" readonly>
+									<input type="text" value="<?php echo $diskondiskon ?>%" name="diskon" class="form-control" readonly>
 								</td>
 								<td></td>
 							</tr>
@@ -210,9 +228,8 @@
 		$bayar = $_POST['bayar'];
 		$kembali = $_POST['kembali'];
 		$tanggal_pembelian = date('Y-m-d');
-		$kasir = $pengguna['nama'];
 
-		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total_beli,diskon,potongan_diskon,subtotal,bayar,kembali,tanggal_pembelian,kasir) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali','$tanggal_pembelian','$kasir')");
+		$sql_cetak = $koneksi->query("INSERT INTO pembelian (kode_penjualan,pembeli,total_beli,diskon,potongan_diskon,subtotal,bayar,kembali,tanggal_pembelian) VALUES ('$kodepj','$pembeli','$total','$diskon','$p_diskon','$sub_total','$bayar','$kembali','$tanggal_pembelian')");
 
 		$sql_telah_dibeli = $koneksi->query("UPDATE penjualan SET status='dibeli' WHERE kode_penjualan='$kodekode'");
 
